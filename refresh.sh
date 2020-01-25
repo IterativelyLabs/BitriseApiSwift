@@ -10,6 +10,7 @@ PROJECT_NAME="BitriseAPI"
 
 # Create a temp dir to work in (to keep things tidy)
 #
+rm -rf $TEMP_DIR
 mkdir $TEMP_DIR
 
 # Generate the Swift 5 source files
@@ -18,10 +19,8 @@ swagger-codegen generate -i https://api-docs.bitrise.io/docs/swagger.json -l swi
 
 # Move everything around and back into the packaged folder structure
 #
-mv -f "$TEMP_DIR/$PROJECT_NAME/Classes/" "$TEMP_DIR/$PROJECT_NAME/Sources/"
-mv -f "$TEMP_DIR/$PROJECT_NAME/Sources/Swaggers" "$TEMP_DIR/$PROJECT_NAME/Sources/$PROJECT_NAME"
-cp -Rf "$TEMP_DIR/$PROJECT_NAME/Sources" ./Sources
+cp -Rf "$TEMP_DIR/$PROJECT_NAME/Classes/Swaggers/" "./Sources/$PROJECT_NAME"
 
 # Finally clean up
 #
- rm -rf $TEMP_DIR
+rm -rf $TEMP_DIR
